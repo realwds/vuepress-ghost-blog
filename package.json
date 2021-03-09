@@ -1,0 +1,28 @@
+{
+  "name": "vuepress-blog",
+  "version": "3.0.1",
+  "scripts": {
+    "copy:casper:styles": "rm -rf blog/.vuepress/theme/styles && mkdir -p blog/.vuepress/theme/styles && cp node_modules/casper/assets/built/*.css blog/.vuepress/theme/styles/",
+    "copy:casper": "npm run copy:casper:styles",
+    "dev": "vuepress dev blog",
+    "build": "vuepress build blog",
+    "bundle:clean": "rm -rf publish && mkdir -p publish",
+    "bundle:copy": "cp -R blog/.vuepress/theme/* publish/ && cp package.json publish/",
+    "bundle": "npm run build && npm run bundle:clean && npm run bundle:copy"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "striptags": "^3.1.1",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "casper": "git@github.com:TryGhost/Casper.git",
+    "vue": "2.6.11",
+    "vuepress": "1.4.0"
+  },
+  "peerDependencies": {
+    "vue": "2.6.x",
+    "vuepress": "1.4.0"
+  }
+}
