@@ -1,7 +1,7 @@
 module.exports = {
   title: 'realwds\'blog',
   description: 'Ghosts default theme for Vuepress',
-  base: '/',
+  base: '/vuepress-blog/',
   theme: 'casper',
   head: [
     ['link', { rel: 'icon', href: '/favicon.png' }]
