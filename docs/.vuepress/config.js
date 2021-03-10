@@ -46,5 +46,9 @@ module.exports = {
       github: 'https://github.com',
       twitter: 'https://twitter.com'
     }
-  }
+  },
+  plugins: [
+    // nprogress顶部进度条
+    '@vuepress/nprogress'
+  ]
 }

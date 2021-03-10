@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/realwds/vuepress-blog#readme",
   "devDependencies": {
+    "@vuepress/plugin-nprogress": "^1.8.2",
     "vuepress": "^1.8.2"
   },
   "dependencies": {
