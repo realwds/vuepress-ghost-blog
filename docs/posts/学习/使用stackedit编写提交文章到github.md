@@ -14,9 +14,7 @@ readingTime: 3 Minutes
 
 <!-- more -->
 
-使用stackedit编写提交文章到github
-
-链接地址：https://stackedit.io/app
+链接地址：[https://stackedit.io/app](https://stackedit.io/app)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NjYzNzQ5N119
+eyJoaXN0b3J5IjpbMTk2ODA3OTg0MV19
 -->
