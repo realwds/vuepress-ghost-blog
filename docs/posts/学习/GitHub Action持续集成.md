@@ -9,17 +9,70 @@ categories:
   - 学习
 readingTime: 3 Minutes
 ---
-
-在3月12日中国植树节前夕，“你欠了多少棵树”的词条冲上微博热搜。不少人这才头一次知道：早在40年前，全国人大就作出决议，规定公民每年应植树3-5棵，其效力与法律等同。
+GitHub Action 自动部署到 GitHub & Gitee & GitLab
 
 <!-- more -->
 
-公民去哪儿能植树尽责？
+## GitHub Action 自动部署到 GitHub Page
 
-义务植树是一份历史担当。走过40年岁月，需要种树、适合种树的地方基本已披上了绿装，剩下的多是边角地或者偏僻的深山区，并不适合普通人跋山涉水赶过去。
+``` yaml
+name: DEPLOY CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
 
-新形势下，公民如何履行义务、植树尽责？
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: docs/.vuepress/dist
+        BUILD_SCRIPT: npm install && npm run build
+```
 
-自2017年起，首都绿化委员会办公室启动实施了北京“互联网+全民义务植树”基地体系建设。四年来，已建成各级基地共25处。义务植树也不再仅限于种树，而是共8类37种，包括造林绿化、抚育管护、自然保护、认种认养、设施修建、捐资捐物、志愿服务和其他形式。
 
-全民义务植树网也开通了“网络参与”通道，通过网络捐款开展国土绿化、植树造林相关项目。以20元折算1株树的计算标准，只要捐资60元以上，就相当于履行了当年的植树义务。
+## GitHub Action 自动部署到 Gitee & GitLab
+
+``` yaml
+name: MIRROR CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  mirror_to_gitee:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v1
+      - name: 'Mirror to gitee'
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            git@gitee.com:tsund/test.git
+          ssh_private_key:
+            ${{ secrets.GITEE_KEY }}
+
+  mirror_to_gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v1
+      - name: 'Mirror to gitlab'
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            git@gitlab.com:tsund/test.git
+          ssh_private_key:
+            ${{ secrets.GITLAB_KEY }}
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTUzOTA0NTIxM119
+-->
